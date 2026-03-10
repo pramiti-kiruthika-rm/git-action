@@ -5,7 +5,17 @@ info:
 
 http:
   method: GET
-  url: https://dummyjson.com/products
+  url: "https://dummyjson.com/products?name: =Get all call&type=http"
+  params:
+    - name: "name: "
+      value: Get all call
+      type: query
+    - name: type
+      value: http
+      type: query
+  body:
+    type: json
+    data: ""
   auth: inherit
 
 settings:
