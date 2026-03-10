@@ -5,18 +5,23 @@ info:
 
 http:
   method: GET
-  url: "https://dummyjson.com/products?name: =Get all call&type=http"
-  params:
-    - name: "name: "
-      value: Get all call
-      type: query
-    - name: type
-      value: http
-      type: query
+  url: https://dummyjson.com/products
   body:
     type: json
     data: ""
   auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("Status code should be 200", () => {
+          expect(res.status).to.equal(200);
+        });
+
+        test("Response should not be empty", () => {
+          expect(res.body.length).to.be.greaterThan(0);
+        });
 
 settings:
   encodeUrl: true
