@@ -1,4 +1,4 @@
 name: ci
 variables:
-  - name: base_url
-    value: https://jsonplaceholder.typicode.com
+  - secret: true
+    name: base_url
