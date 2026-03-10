@@ -14,32 +14,6 @@ http:
       }
   auth: inherit
 
-runtime:
-  scripts:
-    - type: before-request
-      code: |-
-        const axios = require("axios");
-
-        async function getToken() {
-          try {
-            const response = await axios.post("https://reqres.in/api/login", {
-              email: "eve.holt@reqres.in",
-              password: "cityslicka"
-            }, {
-              headers: { "Content-Type": "application/json" }
-            });
-
-            console.log("Token:", response.data.token);
-            bru.setVar("token", response.data.token)
-            return response.data.token;
-          } catch (error) {
-            console.error("Error getting token:", error.response?.data || error.message);
-          }
-        }
-
-        // Call the function
-        await getToken();
-
 settings:
   encodeUrl: true
   timeout: 0
